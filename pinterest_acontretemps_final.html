@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Contre Temps (@AContreTemps_retro) — Pinterest</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pin-red:#e60023;--pin-red-h:#ad081b;--pin-dk:#111;--pin-gr:#767676;
+    --pin-lt:#efefef;--pin-bg:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--pin-bg);font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--pin-dk);-webkit-font-smoothing:antialiased}
+
+  .topnav{position:sticky;top:0;z-index:200;height:56px;background:#fff;display:flex;align-items:center;padding:0 16px;box-shadow:0 1px 0 rgba(0,0,0,.07)}
+  .topnav-logo svg{width:24px;height:24px}
+  .topnav-btn{height:40px;padding:0 16px;border-radius:20px;font-size:15px;font-weight:600;border:none;cursor:pointer;margin-left:8px;font-family:inherit}
+  .topnav-btn.home{background:var(--pin-dk);color:#fff}
+  .topnav-btn.create{background:transparent;color:var(--pin-dk)}
+  .topnav-btn.create:hover{background:var(--pin-lt)}
+  .topnav-search{flex:1;margin:0 8px;height:40px;background:#efefef;border-radius:24px;display:flex;align-items:center;padding:0 16px}
+  .topnav-search svg{width:16px;height:16px;color:var(--pin-gr);flex-shrink:0;margin-right:8px}
+  .topnav-search input{border:none;background:transparent;font-size:15px;width:100%;outline:none;font-family:inherit;color:var(--pin-dk)}
+  .topnav-search input::placeholder{color:var(--pin-gr)}
+  .topnav-right{display:flex;align-items:center;gap:4px;margin-left:8px}
+  .topnav-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .topnav-icon:hover{background:var(--pin-lt)}
+  .topnav-icon svg{width:20px;height:20px;color:var(--pin-dk)}
+  .topnav-av{width:24px;height:24px;border-radius:50%;overflow:hidden;margin-left:4px;cursor:pointer}
+  .topnav-av img{width:100%;height:100%;object-fit:cover}
+
+  .profile{text-align:center;padding:24px 16px 0;max-width:600px;margin:0 auto}
+  .pf-av{width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 8px;background:#efefef}
+  .pf-av img{width:100%;height:100%;object-fit:cover}
+  .pf-name{font-size:36px;font-weight:700;color:var(--pin-dk)}
+  .pf-handle{font-size:14px;color:var(--pin-gr);margin-top:2px;display:flex;align-items:center;justify-content:center;gap:4px}
+  .pf-handle svg{width:12px;height:12px}
+  .pf-bio{font-size:14px;color:var(--pin-dk);margin-top:10px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+  .pf-stats{font-size:14px;color:var(--pin-gr);margin-top:6px}
+  .pf-stats b{color:var(--pin-dk);font-weight:600}
+  .pf-actions{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .btn-pf{height:40px;padding:0 16px;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;border:none;font-family:inherit;background:var(--pin-lt);color:var(--pin-dk)}
+  .btn-pf:hover{background:#e1e1e1}
+
+  .tabs-bar{display:flex;justify-content:center;gap:8px;margin-top:20px}
+  .tab-btn{padding:14px 8px 12px;font-size:15px;font-weight:600;color:var(--pin-dk);border:none;background:transparent;cursor:pointer;position:relative;font-family:inherit}
+  .tab-btn::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:var(--pin-dk);border-radius:2px;transition:width .2s}
+  .tab-btn.active::after{width:calc(100% - 8px)}
+  .tab-btn:not(.active){color:var(--pin-gr);font-weight:500}
+
+  .bf{display:flex;align-items:center;justify-content:space-between;max-width:1260px;margin:12px auto 0;padding:0 16px}
+  .bf-left{display:flex;align-items:center;gap:8px}
+  .bf-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .bf-icon:hover{background:var(--pin-lt)}
+  .bf-icon svg{width:20px;height:20px}
+  .bf-pill{height:32px;padding:0 16px;border-radius:16px;background:var(--pin-dk);color:#fff;font-size:14px;font-weight:500;display:flex;align-items:center;border:none;font-family:inherit}
+  .btn-cr{height:40px;padding:0 20px;border-radius:20px;background:var(--pin-red);color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer;font-family:inherit}
+  .btn-cr:hover{background:var(--pin-red-h)}
+
+  .masonry{max-width:1260px;margin:16px auto 0;padding:0 8px;column-count:5;column-gap:8px}
+  @media(max-width:1100px){.masonry{column-count:4}}
+  @media(max-width:850px){.masonry{column-count:3}}
+  @media(max-width:600px){.masonry{column-count:2;padding:0 4px;column-gap:4px}}
+
+  .pin{break-inside:avoid;margin-bottom:8px;border-radius:16px;overflow:hidden;background:#fff;cursor:pointer;position:relative}
+  .pin:hover .pin-ov{opacity:1}
+  .pin:hover .pin-sv{opacity:1}
+  .pin:hover .pin-ac{opacity:1}
+  .pin:hover .pin-bd{opacity:1}
+  .pin-ic{position:relative;overflow:hidden}
+  .pin-ic img{width:100%;display:block;border-radius:16px;transition:filter .2s}
+  .pin:hover .pin-ic img{filter:brightness(.88)}
+  .pin-ov{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:16px;opacity:0;transition:opacity .15s;pointer-events:none}
+  .pin-sv{position:absolute;top:12px;right:12px;height:36px;padding:0 16px;border-radius:20px;background:var(--pin-red);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:inherit;opacity:0;transition:opacity .15s;z-index:2}
+  .pin-sv:hover{background:var(--pin-red-h)}
+  .pin-ac{position:absolute;bottom:12px;right:12px;display:flex;gap:6px;opacity:0;transition:opacity .15s;z-index:2}
+  .pin-ab{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .pin-ab:hover{background:#fff}
+  .pin-ab svg{width:16px;height:16px}
+  .pin-bd{position:absolute;bottom:12px;left:12px;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--pin-dk);opacity:0;transition:opacity .15s;z-index:2;max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pin-nf{padding:6px 8px 10px}
+  .pin-tt{font-size:13px;font-weight:600;color:var(--pin-dk);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pin-sr{display:flex;align-items:center;gap:6px;margin-top:4px}
+  .pin-si{width:16px;height:16px;border-radius:50%;overflow:hidden;flex-shrink:0}
+  .pin-si img{width:100%;height:100%;object-fit:cover}
+  .pin-st{font-size:12px;color:var(--pin-gr);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .footer{text-align:center;padding:48px 16px 32px;font-size:12px;color:var(--pin-gr)}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="topnav-logo"><svg viewBox="0 0 24 24" fill="#e60023"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.024 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.993 3.995-.282 1.193.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.084.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.402.163-1.495-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/></svg></div>
+  <button class="topnav-btn home">Accueil</button>
+  <button class="topnav-btn create">Créer</button>
+  <div class="topnav-search">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6m13.12 2.88l-4.26-4.26A9.842 9.842 0 0020 10c0-5.52-4.48-10-10-10S0 4.48 0 10s4.48 10 10 10c1.67 0 3.24-.41 4.62-1.14l4.26 4.26a3 3 0 004.24-4.24"/></svg>
+    <input type="text" placeholder="Rechercher dans vos Épingles">
+  </div>
+  <div class="topnav-right">
+    <div class="topnav-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 12.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3m-6 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3m-6-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3M12 0C5.925 0 1 4.925 1 11v2c0 6.075 4.925 11 11 11s11-4.925 11-11v-2c0-6.075-4.925-11-11-11"/></svg></div>
+    <div class="topnav-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3zm7-10.83V8c0-3.53-2.61-6.43-6-6.92V0h-2v1.08C7.61 1.57 5 4.47 5 8v5.17L3 15.17V17h18v-1.83l-2-2z"/></svg></div>
+    <div class="topnav-av"><img src="https://acontretemps.mastermarketing.cloud/wp-content/uploads/2026/02/Simple-Minimalist-Typographic-Beauty-Studio-Logo.png" alt="ACT"></div>
+  </div>
+</div>
+
+<div class="profile">
+  <div class="pf-av"><img src="https://acontretemps.mastermarketing.cloud/wp-content/uploads/2026/02/Simple-Minimalist-Typographic-Beauty-Studio-Logo.png" alt="À Contre Temps"></div>
+  <h1 class="pf-name">À Contre Temps</h1>
+  <div class="pf-handle">
+    <svg viewBox="0 0 24 24" fill="#e60023"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.024 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.993 3.995-.282 1.193.599 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.084.345-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.402.163-1.495-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/></svg>
+    acontretemps_retro
+  </div>
+  <p class="pf-bio">Quand le rétro devient chic. Mobilier & décoration inspirés des années 70, revisités avec élégance et exigence. Intérieurs de caractère, matières nobles et design affirmé.</p>
+  <p class="pf-stats"><b>50</b> épingles · <b>10</b> tableaux · <b>0</b> abonnés</p>
+  <div class="pf-actions">
+    <button class="btn-pf">Partager</button>
+  </div>
+  <div class="tabs-bar">
+    <button class="tab-btn">Créations</button>
+    <button class="tab-btn active">Enregistrements</button>
+  </div>
+</div>
+
+<div class="bf">
+  <div class="bf-left">
+    <div class="bf-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19.5a1.75 1.75 0 11.001-3.501A1.75 1.75 0 019 19.5M22.25 12c0-5.652-4.598-10.25-10.25-10.25S1.75 6.348 1.75 12 6.348 22.25 12 22.25 22.25 17.652 22.25 12M15 4.5a1.75 1.75 0 11.001 3.501A1.75 1.75 0 0115 4.5"/></svg></div>
+    <span class="bf-pill">Tous les tableaux</span>
+  </div>
+  <button class="btn-cr">Créer</button>
+</div>
+
+<div class="masonry" id="pins"></div>
+<div class="footer">pinterest.com/AContreTemps_retro</div>
+
+<script>
+const B='https://acontretemps.mastermarketing.cloud/wp-content/uploads/2026/';
+const P=[
+{i:B+'02/SALON-1-1024x683.png',t:'Salon rétro chic : velours, bois foncé et lumière chaude pour un intérieur élégant',b:'Salon rétro chic',r:'4/3'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-19_56_10-600x600.png',t:'Fauteuil Paloma — capitonnage crème et piètement chromé incliné · 1 349 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'03/EN-1-1.png',t:'Velours & profondeur — ambiance feutrée inspirée des seventies',b:'Velours & matières',r:'4/3.5'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_44_09-600x600.png',t:'Table Icona — rouge laqué et double piètement sculptural · 1 690 €',b:'Tables & mobilier',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_08_02-600x600.png',t:'Suspension Solaris — orange laqué, opalin et chrome · 1 050 €',b:'Luminaires',r:'3/4'},
+{i:B+'03/A-VOIR-2-1.png',t:'Couleur & audace — orange vibrant, marbre et formes iconiques',b:'Couleurs rétro',r:'4/3.5'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_04_27-600x600.png',t:'Canapé Sahara — cuir cognac et surpiqûres graphiques · 2 259 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'02/Keep_The_walnut_wood_backgrou_Nano_Banana_Pro_68312-1024x1024.jpg',t:'Bois de noyer & velours — les matières essentielles du rétro chic',b:'Velours & matières',r:'1/1'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-20_16_10-600x600.png',t:'Téléphone Panthera — cadran rotatif et imprimé léopard · 199 €',b:'Objets déco',r:'3/4'},
+{i:B+'03/SALON-3.png',t:'Lumière & reflets — verre texturé et lignes chromées',b:'Chrome & verre fumé',r:'4/3'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-09_05_32-600x600.png',t:'Canapé Éclipse — velours vert olive · 1 649 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_40_21-600x600.png',t:'Table Helios — verre fumé et pied tulipe chromé · 1 490 €',b:'Tables & mobilier',r:'3/4'},
+{i:B+'02/genere_moi_une_belle_bannire_d_Nano_Banana_Pro_03844-1-1024x1024.jpg',t:'Textiles épais et teintes profondes — la signature des seventies',b:'Velours & matières',r:'1/1'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_36_24-600x600.png',t:'Suspension Opaline — triple globe et structure dorée · 1 290 €',b:'Luminaires',r:'3/4'},
+{i:B+'03/EN-1-2.png',t:'Graphisme & caractère — tapis audacieux et lignes iconiques',b:'Salon rétro chic',r:'4/3.5'},
+{i:B+'03/ChatGPT-Image-1-mars-2026-a-22_08_56-600x600.png',t:'Canapé Dolce — velours terracotta capitonné · 1 989 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-20_08_56-600x600.png',t:'Horloge Tempo — chrome déformé et chiffres rouges · 290 €',b:'Objets déco',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-10_59_18-600x600.png',t:'Fauteuil Rubis — velours rouge et structure chromée · 839 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_27_30-600x600.png',t:'Table Linea — laque crème et lignes arrondies · 1 299 €',b:'Tables & mobilier',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_37_38-600x600.png',t:'Table basse Saturn — orange modulaire graphique · 790 €',b:'Couleurs rétro',r:'3/4'},
+{i:B+'02/ChatGPT-Image-27-fevr.-2026-a-09_52_58.png',t:'Comment créer un salon rétro chic en 5 étapes — Guide complet',b:'Blog',r:'4/3.2'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-09_20_57-600x600.png',t:'Fauteuil Fauve — tissu zébré et chrome · 1 120 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_18_49-600x600.png',t:'Lampe Rosso — rouge laqué et chrome courbe · 520 €',b:'Luminaires',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-19_49_54-600x600.png',t:'Bout de canapé Nexo — la touche finale rétro chic',b:'Objets déco',r:'3/4'},
+{i:B+'02/ChatGPT-Image-27-fevr.-2026-a-10_34_22.png',t:'Pièces uniques vintage — sélection exclusive Marketplace',b:'Marketplace',r:'4/3.2'},
+{i:B+'02/ChatGPT-Image-3-fevr.-2026-a-20_19_48.png',t:'Velours, bois et chrome — les 3 matières clés du rétro chic',b:'Blog',r:'4/3.2'},
+{i:B+'02/ChatGPT-Image-1-mars-2026-a-22_14_57-600x600.png',t:'Canapé Orfeo — bouclette crème et formes arrondies · 1 890 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'02/ChatGPT-Image-27-fevr.-2026-a-10_05_13.png',t:'Velours olive — la teinte signature du rétro chic',b:'Velours & matières',r:'4/3.2'},
+{i:B+'02/ChatGPT-Image-3-fevr.-2026-a-20_58_39.png',t:'Comment choisir le bon luminaire pour votre salon rétro chic',b:'Blog',r:'4/3.2'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-09_12_28-600x600.png',t:'Fauteuil Aura — bouclette crème et piètement doré · 999 €',b:'Canapés & fauteuils',r:'3/4'},
+{i:B+'02/ChatGPT-Image-4-fevr.-2026-a-10_26_54-1024x683.png',t:'Palettes couleurs années 70 — associations et conseils',b:'Blog',r:'4/3'},
+{i:B+'02/ChatGPT-Image-27-fevr.-2026-a-10_37_25.png',t:'Mobilier chiné — quand l\'authentique rencontre le chic',b:'Marketplace',r:'4/3.2'},
+{i:B+'02/SALON-1-1024x683.png',t:'Cognac & moutarde — palette chaude pour un salon rétro',b:'Couleurs rétro',r:'4/3'},
+{i:B+'03/EN-1-1.png',t:'5 erreurs à éviter quand on décore en style rétro chic',b:'Blog',r:'4/3.5'},
+{i:B+'03/SALON-3.png',t:'Chrome, verre fumé et velours — le trio gagnant du salon',b:'Chrome & verre fumé',r:'4/3'},
+{i:B+'03/A-VOIR-2-1.png',t:'Orange pop — oser la couleur dans un intérieur rétro chic',b:'Couleurs rétro',r:'4/3.5'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-19_56_10-600x600.png',t:'Bouclette crème & piètement doré — la douceur rétro chic',b:'Velours & matières',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_04_27-600x600.png',t:'Terracotta & velours — quand la couleur rencontre la texture',b:'Velours & matières',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_44_09-600x600.png',t:'Rouge laqué — oser la couleur comme pièce maîtresse',b:'Couleurs rétro',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_40_21-600x600.png',t:'Verre fumé & pied tulipe — l\'icône du design seventies',b:'Chrome & verre fumé',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-09_05_32-600x600.png',t:'Vert olive en velours — l\'essence du rétro chic',b:'Couleurs rétro',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_36_24-600x600.png',t:'Globes opalin — un luminaire rétro chic raffiné',b:'Chrome & verre fumé',r:'3/4'},
+{i:B+'02/genere_moi_une_belle_bannire_d_Nano_Banana_Pro_03844-1-1024x1024.jpg',t:'Luminaire vintage chiné — pièce d\'exception Marketplace',b:'Marketplace',r:'1/1'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-14_18_49-600x600.png',t:'Chrome & laque rouge — l\'éclairage statement seventies',b:'Chrome & verre fumé',r:'3/4'},
+{i:B+'03/EN-1-2.png',t:'Chromes brillants et lignes iconiques — le design vintage',b:'Salon rétro chic',r:'4/3.5'},
+{i:B+'02/Keep_The_walnut_wood_backgrou_Nano_Banana_Pro_68312-1024x1024.jpg',t:'Mobilier & décoration rétro chic — notre vision du style',b:'Salon rétro chic',r:'1/1'},
+{i:B+'03/ChatGPT-Image-1-mars-2026-a-22_08_56-600x600.png',t:'Velours terracotta — la couleur qui réchauffe l\'intérieur',b:'Couleurs rétro',r:'3/4'},
+{i:B+'03/ChatGPT-Image-3-mars-2026-a-20_16_10-600x600.png',t:'Objets vintage — les accents qui font un intérieur rétro',b:'Objets déco',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-10_59_18-600x600.png',t:'Rouge velours — l\'accent ultime pour un fauteuil statement',b:'Couleurs rétro',r:'3/4'},
+{i:B+'03/ChatGPT-Image-2-mars-2026-a-15_37_38-600x600.png',t:'Orange & lignes graphiques — la table basse du salon',b:'Tables & mobilier',r:'3/4'},
+];
+
+const c=document.getElementById('pins');
+const logo=B+'02/Simple-Minimalist-Typographic-Beauty-Studio-Logo.png';
+
+P.forEach(p=>{
+const d=document.createElement('div');
+d.className='pin';
+d.innerHTML=`<div class="pin-ic"><img src="${p.i}" alt="" style="aspect-ratio:${p.r};object-fit:cover"><div class="pin-ov"></div><button class="pin-sv">Enregistrer</button><div class="pin-bd">${p.b}</div><div class="pin-ac"><button class="pin-ab"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 14l-9 9-9-9h4V3h10v11z"/></svg></button><button class="pin-ab"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/></svg></button></div></div><div class="pin-nf"><div class="pin-tt">${p.t}</div><div class="pin-sr"><div class="pin-si"><img src="${logo}" alt=""></div><span class="pin-st">acontretemps.mastermarketing.cloud</span></div></div>`;
+c.appendChild(d);
+});
+</script>
+</body>
+</html>
